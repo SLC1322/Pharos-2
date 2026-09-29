@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="30%" r="80%"><stop offset="0" stop-color="#3a2a1a"/><stop offset=".6" stop-color="#1c140d"/><stop offset="1" stop-color="#0e0a06"/></radialGradient>
+    <linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#ffe7a8" stop-opacity=".95"/><stop offset="1" stop-color="#ffe7a8" stop-opacity="0"/></linearGradient>
+    <linearGradient id="beamL" x1="1" x2="0"><stop offset="0" stop-color="#ffe7a8" stop-opacity=".75"/><stop offset="1" stop-color="#ffe7a8" stop-opacity="0"/></linearGradient>
+    <linearGradient id="tower" x1="0" x2="1"><stop offset="0" stop-color="#a88445"/><stop offset=".45" stop-color="#f0d99a"/><stop offset="1" stop-color="#8a6a32"/></linearGradient>
+    <linearGradient id="pageL" x1="0" x2="1"><stop offset="0" stop-color="#e9dcbc"/><stop offset="1" stop-color="#fbf4e2"/></linearGradient>
+    <linearGradient id="pageR" x1="1" x2="0"><stop offset="0" stop-color="#e9dcbc"/><stop offset="1" stop-color="#fbf4e2"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff2c4"/><stop offset=".35" stop-color="#ffd978" stop-opacity=".8"/><stop offset="1" stop-color="#ffb640" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#sky)"/><g transform="translate(51 51) scale(.8)">
+  <!-- beams -->
+  <path d="M262 150 L512 70 L512 205 Z" fill="url(#beam)"/>
+  <path d="M250 150 L0 90 L0 190 Z" fill="url(#beamL)" opacity=".7"/>
+  <circle cx="256" cy="150" r="70" fill="url(#glow)"/>
+  <!-- tower -->
+  <path d="M256 92 l-20 22 h40 z" fill="#f0d99a"/>
+  <rect x="232" y="114" width="48" height="10" rx="2" fill="url(#tower)"/>
+  <rect x="238" y="126" width="36" height="42" fill="#fff4cf"/>
+  <path d="M236 168 h40 l8 82 h-56 z" fill="url(#tower)"/>
+  <rect x="233" y="166" width="46" height="8" fill="#6d4f22"/>
+  <path d="M226 250 h60 l10 70 h-80 z" fill="url(#tower)" opacity=".95"/>
+  <rect x="222" y="248" width="68" height="8" fill="#6d4f22"/>
+  <rect x="251" y="190" width="10" height="16" rx="5" fill="#3a2a14"/>
+  <rect x="251" y="270" width="10" height="18" rx="5" fill="#3a2a14"/>
+  <!-- open book -->
+  <path d="M256 330 C200 300 130 300 70 318 L70 420 C130 402 200 402 256 432 Z" fill="url(#pageL)"/>
+  <path d="M256 330 C312 300 382 300 442 318 L442 420 C382 402 312 402 256 432 Z" fill="url(#pageR)"/>
+  <path d="M70 420 C130 402 200 402 256 432 C312 402 382 402 442 420 L442 432 C382 414 312 414 256 444 C200 414 130 414 70 432 Z" fill="#7a2418"/>
+  <g fill="none" stroke="#b9a37a" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M100 342 C150 330 195 332 232 346"/><path d="M100 362 C150 350 195 352 232 366"/><path d="M100 382 C150 370 195 372 232 386"/>
+    <path d="M280 346 C317 332 362 330 412 342"/><path d="M280 366 C317 352 362 350 412 362"/><path d="M280 386 C317 372 362 370 412 382"/>
+  </g>
+  <path d="M256 330 L256 432" stroke="#c9b48a" stroke-width="2"/>
+</g></svg>
