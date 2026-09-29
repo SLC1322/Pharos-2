@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Pharos</title>
+<meta name="description" content="Pharos — a private, offline book reader.">
+<meta name="theme-color" content="#16110c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap">
+<link rel="stylesheet" href="css/pharos.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M7 3.5h10v17l-5-4-5 4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bookmark-on" viewBox="0 0 24 24"><path d="M7 3.5h10v17l-5-4-5 4z" fill="currentColor" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-contents" viewBox="0 0 24 24"><path d="M4 6h2M9 6h11M4 12h2M9 12h11M4 18h2M9 18h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-type" viewBox="0 0 24 24"><path d="M3 19l5-13 5 13M4.8 14.5h6.4M14 19l3.5-9 3.5 9M15.2 16h4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 19l1-4L16 5l3 3L9 18z M14 7l3 3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5 16V5.5A1.5 1.5 0 0 1 6.5 4H15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-pharos" viewBox="0 0 64 64">
+    <path d="M32 6l-4 5h8z" fill="currentColor"/>
+    <path d="M27 12h10l-1.5 8h-7z" fill="currentColor" opacity=".95"/>
+    <path d="M28.5 21h7l2.5 18h-12z" fill="currentColor" opacity=".85"/>
+    <path d="M25.5 40h13l3 16h-19z" fill="currentColor" opacity=".75"/>
+    <path d="M37 15.5L60 9v13z M27 15.5L4 9v13z" fill="currentColor" opacity=".35"/>
+  </symbol>
+</svg>
+
+<main id="app">
+  <!-- ============ LIBRARY ============ -->
+  <section id="library" class="screen">
+    <header class="lib-head">
+      <svg class="lib-logo"><use href="#i-pharos"/></svg>
+      <div>
+        <h1>Pharos</h1>
+        <p class="lib-sub">The Pinakes</p>
+      </div>
+    </header>
+    <div id="nowReading"></div>
+    <div id="shelves" class="shelves"></div>
+    <div id="emptyState" class="empty" hidden>
+      <svg class="empty-light"><use href="#i-pharos"/></svg>
+      <h2>Your library awaits</h2>
+      <p>Tap <b>+</b> to add a book from your phone. Pharos reads EPUB, plain text, HTML, Markdown, Word (.docx) and PDF.</p>
+      <p class="tip">Tip: on Project Gutenberg, choose <b>EPUB3</b> for the best chapters and italics. You can also <b>Share</b> a downloaded book to Pharos.</p>
+    </div>
+    <button id="addBtn" class="fab" aria-label="Add a book"><svg><use href="#i-plus"/></svg></button>
+    <input type="file" id="fileInput" multiple hidden>
+  </section>
+
+  <!-- ============ READER ============ -->
+  <section id="reader" class="screen" hidden>
+    <div id="stage" class="stage"></div>
+    <div id="topbar" class="chrome top">
+      <button id="backBtn" class="icon-btn" aria-label="Library"><svg><use href="#i-back"/></svg></button>
+      <div class="top-title"><span id="bookTitle"></span><small id="bookAuthor"></small></div>
+      <button id="bmBtn" class="icon-btn" aria-label="Bookmark this page"><svg><use href="#i-bookmark"/></svg></button>
+    </div>
+    <div id="bottombar" class="chrome bottom">
+      <div class="loc"><span id="locChapter"></span><span id="locPct"></span></div>
+      <input id="slider" type="range" min="0" max="1000" value="0" aria-label="Position in book">
+      <div class="tools">
+        <button id="tocBtn" class="tool"><svg><use href="#i-contents"/></svg><span>Contents</span></button>
+        <button id="searchBtn" class="tool"><svg><use href="#i-search"/></svg><span>Search</span></button>
+        <button id="setBtn" class="tool"><svg><use href="#i-type"/></svg><span>Style</span></button>
+      </div>
+    </div>
+    <div id="selpop" class="selpop" hidden>
+      <button class="ink c-gold" data-color="gold" aria-label="Gold"></button>
+      <button class="ink c-rose" data-color="rose" aria-label="Rose"></button>
+      <button class="ink c-sage" data-color="sage" aria-label="Sage"></button>
+      <button class="ink c-azure" data-color="azure" aria-label="Azure"></button>
+      <span class="sep"></span>
+      <button class="pop-btn" data-act="note" aria-label="Note"><svg><use href="#i-note"/></svg></button>
+      <button class="pop-btn" data-act="copy" aria-label="Copy"><svg><use href="#i-copy"/></svg></button>
+      <button class="pop-btn" data-act="delete" aria-label="Remove highlight"><svg><use href="#i-trash"/></svg></button>
+    </div>
+  </section>
+
+  <div id="scrim" class="scrim"></div>
+
+  <!-- Contents / bookmarks / notes / search -->
+  <aside id="drawer" class="drawer" aria-label="Contents">
+    <div class="drawer-head">
+      <div class="search-box"><svg><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Search this book" enterkeyhint="search"></div>
+      <button class="icon-btn" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-tab="toc">Chapters</button>
+      <button class="tab" data-tab="bm">Bookmarks</button>
+      <button class="tab" data-tab="hl">Notes</button>
+    </div>
+    <div id="drawerList" class="drawer-list"></div>
+  </aside>
+
+  <!-- Reading settings -->
+  <div id="settings" class="sheet" aria-label="Reading settings">
+    <div class="grab"></div>
+    <h3>Book style</h3>
+    <div class="styles" id="styleSwatches">
+      <button data-style="manuscript"><i class="sw sw-manuscript"><b>A</b></i><span>Manuscript</span></button>
+      <button data-style="papyrus"><i class="sw sw-papyrus"><b>A</b></i><span>Papyrus</span></button>
+      <button data-style="tome"><i class="sw sw-tome"><b>A</b></i><span>Tome</span></button>
+      <button data-style="hardcover"><i class="sw sw-hardcover"><b>A</b></i><span>Hardcover</span></button>
+    </div>
+    <div class="seg" id="themeSeg"><button data-theme="day">Day</button><button data-theme="candle">Candle</button><button data-theme="night">Night</button></div>
+    <label class="slide"><span>Size</span><input id="fsRange" type="range" min="14" max="30" step="1"><output id="fsOut"></output></label>
+    <label class="slide"><span>Spacing</span><input id="lhRange" type="range" min="1.2" max="2.1" step="0.05"><output id="lhOut"></output></label>
+    <label class="slide"><span>Margins</span><input id="mgRange" type="range" min="8" max="48" step="2"><output id="mgOut"></output></label>
+    <div class="row"><span>Justify text</span><button id="justifyTgl" class="toggle" role="switch"></button></div>
+    <div id="codexOnly">
+      <div class="row"><span>Reading</span><div class="seg small" id="modeSeg"><button data-mode="paged">Pages</button><button data-mode="scroll">Scroll</button></div></div>
+      <div class="row" id="dirRow"><span>Page turn</span><div class="seg small" id="dirSeg"><button data-dir="ltr">Sideways</button><button data-dir="btt">Upward</button></div></div>
+    </div>
+    <p id="papyrusNote" class="note-line" hidden>The scroll unrolls sideways. Swipe or tap its edges.</p>
+  </div>
+
+  <!-- Book card -->
+  <div id="bookcard" class="sheet card" aria-label="Book">
+    <div class="grab"></div>
+    <div class="card-body">
+      <div class="card-cover" id="cardCover"></div>
+      <div class="card-info">
+        <h2 id="cardTitle"></h2>
+        <p id="cardAuthor"></p>
+        <p id="cardMeta" class="muted"></p>
+        <div class="bar"><i id="cardBar"></i></div>
+        <button id="cardRead" class="primary">Read</button>
+      </div>
+    </div>
+    <h3>Style for this book</h3>
+    <div class="styles compact" id="cardStyles">
+      <button data-style="manuscript"><i class="sw sw-manuscript"><b>A</b></i><span>Manuscript</span></button>
+      <button data-style="papyrus"><i class="sw sw-papyrus"><b>A</b></i><span>Papyrus</span></button>
+      <button data-style="tome"><i class="sw sw-tome"><b>A</b></i><span>Tome</span></button>
+      <button data-style="hardcover"><i class="sw sw-hardcover"><b>A</b></i><span>Hardcover</span></button>
+    </div>
+    <button id="cardDelete" class="danger">Remove from library</button>
+  </div>
+
+  <!-- Note editor -->
+  <div id="noteDlg" class="sheet note-dlg" aria-label="Note">
+    <div class="grab"></div>
+    <blockquote id="noteQuote"></blockquote>
+    <textarea id="noteText" rows="5" placeholder="Write a marginal note…"></textarea>
+    <div class="note-actions"><button id="noteCancel">Cancel</button><button id="noteSave" class="primary">Save note</button></div>
+  </div>
+
+  <div id="busy" class="busy" hidden><svg><use href="#i-pharos"/></svg><span id="busyText">Opening…</span></div>
+  <div id="toast" class="toast" role="status"></div>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
