@@ -1,8 +1,8 @@
 /* ==========================================================================
    Pharos — styles
    ========================================================================== */
-@font-face { font-family: 'Lora Local'; src: url(../fonts/Lora.woff) format('woff'); font-weight: 400 700; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Lora Local'; src: url(../fonts/Lora-Italic.woff) format('woff'); font-weight: 400 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lora Local'; src: url(Lora.woff) format('woff'); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lora Local'; src: url(Lora-Italic.woff) format('woff'); font-weight: 400 700; font-style: italic; font-display: swap; }
 
 :root {
   --ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;

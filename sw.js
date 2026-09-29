@@ -3,12 +3,12 @@ const VERSION = 'pharos-v1';
 const FONT_CACHE = 'pharos-fonts';
 const SHARE_CACHE = 'pharos-share';
 const SHELL = [
-  './', './index.html', './manifest.webmanifest', './css/pharos.css',
-  './js/app.js', './js/db.js', './js/parse.js', './js/reader.js', './js/textmap.js', './js/zip.js', './js/pdfview.js',
-  './fonts/Lora.woff', './fonts/Lora-Italic.woff',
-  './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png',
-  './vendor/pdf.min.mjs', './vendor/pdf.worker.min.mjs',
-  './vendor/standard_fonts/FoxitDingbats.pfb', './vendor/standard_fonts/FoxitFixed.pfb', './vendor/standard_fonts/FoxitFixedBold.pfb', './vendor/standard_fonts/FoxitFixedBoldItalic.pfb', './vendor/standard_fonts/FoxitFixedItalic.pfb', './vendor/standard_fonts/FoxitSerif.pfb', './vendor/standard_fonts/FoxitSerifBold.pfb', './vendor/standard_fonts/FoxitSerifBoldItalic.pfb', './vendor/standard_fonts/FoxitSerifItalic.pfb', './vendor/standard_fonts/FoxitSymbol.pfb', './vendor/standard_fonts/LiberationSans-Bold.ttf', './vendor/standard_fonts/LiberationSans-BoldItalic.ttf', './vendor/standard_fonts/LiberationSans-Italic.ttf', './vendor/standard_fonts/LiberationSans-Regular.ttf', './vendor/wasm/jbig2.wasm', './vendor/wasm/openjpeg.wasm', './vendor/wasm/qcms_bg.wasm',
+  './', './index.html', './manifest.webmanifest', './pharos.css',
+  './app.js', './db.js', './parse.js', './reader.js', './textmap.js', './zip.js', './pdfview.js',
+  './Lora.woff', './Lora-Italic.woff',
+  './icon-192.png', './icon-512.png', './maskable-512.png',
+  './pdf.min.mjs', './pdf.worker.min.mjs',
+  './FoxitDingbats.pfb', './FoxitFixed.pfb', './FoxitFixedBold.pfb', './FoxitFixedBoldItalic.pfb', './FoxitFixedItalic.pfb', './FoxitSerif.pfb', './FoxitSerifBold.pfb', './FoxitSerifBoldItalic.pfb', './FoxitSerifItalic.pfb', './FoxitSymbol.pfb', './LiberationSans-Bold.ttf', './LiberationSans-BoldItalic.ttf', './LiberationSans-Italic.ttf', './LiberationSans-Regular.ttf', './jbig2.wasm', './openjpeg.wasm', './qcms_bg.wasm',
 ];
 const FONTS_CSS = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap';
 
